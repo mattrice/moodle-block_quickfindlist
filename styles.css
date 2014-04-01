@@ -15,7 +15,6 @@ body.jsenabled .block_quickfindlist .submitbutton {
     margin-left: 0;
     padding-bottom: 0.2em;
     margin-bottom: 0.2em;
-    border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #d3d3d3;
 }
@@ -23,3 +22,4 @@ body.jsenabled .block_quickfindlist .submitbutton {
 .quickfindlistsearch {
     width: 10em;
 }
+
