@@ -24,7 +24,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['allusers']         = 'All Users';
+$string['allusers']         = 'User';
 $string['pluginname']         = 'Quickfind List';
 $string['blockname']         = 'Quickfind List';
 $string['list']         =  ' List';
@@ -35,6 +35,7 @@ $string['nousers']         =  'ERROR: No users have that role';
 $string['quickfindlist']         = 'Quickfind List';
 $string['quickfindlist:use']         = 'Use Quickfind List';
 $string['role']         = 'Role for listed people to have';
+$string['search'] = 'Search for a {$a}';
 $string['url']         = 'Page to link to (the person\'s id will be appended to the end).<br />Leave blank for default profile';
 $string['userfields']         = 'User data to display/search,<br />You can use the following placeholders:<ul><li>[[firstname]]</li><li>[[lastname]]</li><li>[[username]]</li></ul>';
 $string['userfieldsdefault']         = '[[firstname]] [[lastname]]';

@@ -89,12 +89,12 @@ class block_quickfindlist extends block_base {
 
         if ($role = $DB->get_record('role', array('id' => $this->config->role))) {
             $roleid = $role->id;
-            $this->title = $role->name.get_string('list', 'block_quickfindlist');
+            $this->title = get_string('search', 'block_quickfindlist', $role->name);
         } else {
             $roleid = '-1';
             $strallusers = get_string('allusers', 'block_quickfindlist');
             $strlist = get_string('list', 'block_quickfindlist');
-            $this->title = $strallusers.$strlist;
+            $this->title = get_string('search', 'block_quickfindlist', $strallusers);
         }
 
         $context_system = get_context_instance(CONTEXT_SYSTEM);
@@ -113,18 +113,23 @@ class block_quickfindlist extends block_base {
             $anchor = html_writer::tag('a', '', array('name' => 'quickfindanchor'.$roleid));
             $searchparams = array(
                 'id' => 'quickfindlistsearch'.$roleid,
+                'type' => 'text',
+                'placeholder' => $this->title,
                 'name' => 'quickfindlistsearch'.$roleid,
                 'class' => 'quickfindlistsearch',
                 'autocomplete' => 'off'
             );
             $search = html_writer::empty_tag('input', $searchparams);
             $progressparams = array(
-                'id' => 'quickfindprogress'.$roleid,
-                'class' => 'quickfindprogress',
-                'src' => $this->page->theme->pix_url('i/loading_small', 'moodle'),
-                'alt' => get_string('loading', 'block_quickfindlist')
+                 'id'    => 'quickfindprogress'.$roleid,
+                 'class' => 'quickfindprogress fa fa-2x fa-spin fa-spinner',
+                 'alt'   => get_string('loading', 'block_quickfindlist')
             );
-            $progress = html_writer::empty_tag('img', $progressparams);
+            $progress = html_writer::tag('i', '', $progressparams); 
+            $wrapperparams = array(
+                  'class' => 'progress_wrapper'
+            );
+            $wrapper = html_writer::tag('span', $progress, $wrapperparams);
             $submitparams = array(
                 'type' => 'submit',
                 'class' => 'submitbutton',
@@ -137,7 +142,7 @@ class block_quickfindlist extends block_base {
                 'action' => $this->page->url.'#quickfindanchor'.$roleid,
                 'method' => 'post'
             );
-            $form = html_writer::tag('form', $search.$progress.$submit, $formparams);
+            $form = html_writer::tag('form', $search.$wrapper.$submit, $formparams);
 
             $quickfindsubmit[$roleid] = optional_param('quickfindsubmit'.$roleid,
                                                        false,
