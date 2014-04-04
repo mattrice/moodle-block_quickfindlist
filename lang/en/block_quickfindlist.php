@@ -34,6 +34,7 @@ $string['multiplenorole']         = 'You cannot have two blocks on the same page
 $string['nousers']         =  'ERROR: No users have that role';
 $string['noresults'] = 'No results';
 $string['quickfindlist']         = 'Quickfind List';
+$string['quickfindlist:addinstance'] = 'Add a new Quickfind list block';
 $string['quickfindlist:use']         = 'Use Quickfind List';
 $string['role']         = 'Role for listed people to have';
 $string['search'] = 'Search for a {$a}';
