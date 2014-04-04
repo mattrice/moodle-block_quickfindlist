@@ -23,3 +23,15 @@ body.jsenabled .block_quickfindlist .submitbutton {
     width: 10em;
 }
 
+/* page footer fixes */
+#page-footer .block_quickfindlist li a {
+    color:#333;
+}
+
+#page-footer .block_quickfindlist li a:hover {
+    color:#fff;
+}
+
+#page-footer .block_quickfindlist li {
+    padding:0px;
+}

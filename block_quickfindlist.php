@@ -206,8 +206,11 @@ class block_quickfindlist extends block_base {
                                                 $jsdata,
                                                 false,
                                                 $jsmodule);
+            $this->page->requires->strings_for_js(array(
+                'noresults'
+            ), 'block_quickfindlist');
             $this->content->footer='';
-            $this->content->text = $anchor.$form.$list;
+            $this->content->text = html_writer::tag('div', $anchor.$form.$list, array('class' => 'dropup open'));
         }
 
         return $this->content;

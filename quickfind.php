@@ -40,6 +40,7 @@ if (isloggedin() && has_capability('block/quickfindlist:use', $context) && confi
 
     $output = new stdClass;
     $output->roleid = $role;
+    $output->needle = $name;
     if (!empty($name)) {
 
         $params = array("%$name%");
@@ -61,7 +62,7 @@ if (isloggedin() && has_capability('block/quickfindlist:use', $context) && confi
         }
         $order = 'ORDER BY lastname';
 
-        if ($people = $DB->get_records_sql($select.$from.$where.$order, $params)) {
+        if ($people = $DB->get_records_sql($select.$from.$where.$order, $params, 0, 50)) {
             $output->people = $people;
         }
     }

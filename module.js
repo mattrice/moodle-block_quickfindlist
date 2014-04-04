@@ -57,13 +57,20 @@ M.block_quickfindlist = {
                 success: function(id, o) {
                     var response = Y.JSON.parse(o.responseText);
                     var instance = this.instances[response.roleid];
-                    var list = Y.Node.create('<ul />');
+                    var list = Y.Node.create('<ul class="dropdown-menu" />');
+                    linone = Y.Node.create('<li><a class="disabled">' + M.util.get_string('noresults','block_quickfindlist')  + '</a></li>');
                     for (p in response.people) {
                         var userstring = instance.userfields.replace('[[firstname]]', response.people[p].firstname);
                         userstring = userstring.replace('[[lastname]]', response.people[p].lastname);
                         userstring = userstring.replace('[[username]]', response.people[p].username);
                         li = Y.Node.create('<li><a href="'+instance.url+'&id='+response.people[p].id+'">'+userstring+'</a></li>');
                         list.appendChild(li);
+                    }
+                    if (!userstring) {    //If searching but no results
+                        list.appendChild(linone);
+                    }
+                    if ("" == response.needle) {   //If no search string
+                        list.setStyle('visibility','hidden');
                     }
                     instance.progress.setStyle('visibility', 'hidden');
                     Y.one('#quickfindlist'+roleid).replace(list);
