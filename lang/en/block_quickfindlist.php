@@ -40,3 +40,4 @@ $string['search'] = 'Search for a {$a}';
 $string['url']         = 'Page to link to (the person\'s id will be appended to the end).<br />Leave blank for default profile';
 $string['userfields']         = 'User data to display/search,<br />You can use the following placeholders:<ul><li>[[firstname]]</li><li>[[lastname]]</li><li>[[username]]</li></ul>';
 $string['userfieldsdefault']         = '[[firstname]] [[lastname]]';
+$string['xofy'] = 'Displaying {$a->numerator} of {$a->denominator} matching records.';

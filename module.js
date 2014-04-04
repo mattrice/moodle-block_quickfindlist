@@ -58,7 +58,7 @@ M.block_quickfindlist = {
                     var response = Y.JSON.parse(o.responseText);
                     var instance = this.instances[response.roleid];
                     var list = Y.Node.create('<ul class="dropdown-menu" />');
-                    linone = Y.Node.create('<li><a class="disabled">' + M.util.get_string('noresults','block_quickfindlist')  + '</a></li>');
+                    linone = Y.Node.create('<li><span class="disabled">' + M.util.get_string('noresults','block_quickfindlist')  + '</span></li>');
                     for (p in response.people) {
                         var userstring = instance.userfields.replace('[[firstname]]', response.people[p].firstname);
                         userstring = userstring.replace('[[lastname]]', response.people[p].lastname);
@@ -68,6 +68,10 @@ M.block_quickfindlist = {
                     }
                     if (!userstring) {    //If searching but no results
                         list.appendChild(linone);
+                    }
+                    else if (response.results) {
+                        li = Y.Node.create('<li><span class="disabled">'+response.results+'</span></li>');
+                        list.appendChild(li);
                     }
                     if ("" == response.needle) {   //If no search string
                         list.setStyle('visibility','hidden');

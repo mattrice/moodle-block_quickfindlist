@@ -63,6 +63,9 @@ if (isloggedin() && has_capability('block/quickfindlist:use', $context) && confi
         $order = 'ORDER BY lastname';
 
         if ($people = $DB->get_records_sql($select.$from.$where.$order, $params, 0, 50)) {
+            $results->denominator = $DB->count_records_sql("SELECT COUNT(id) $from $where", $params);
+            $results->numerator = count($people);
+            $output->results = get_string('xofy', 'block_quickfindlist', $results);
             $output->people = $people;
         }
     }
