@@ -29,7 +29,7 @@ span.disabled {
     padding: 3px 20px;
 }
 
-.block_quickfindlist ul > li:last-child {
+.block_quickfindlist .content ul > li:last-child {
     border-top:3px solid;
 }
 
