@@ -27,4 +27,4 @@ $plugin->version = 2014040700;
 $plugin->requires = 2010112400;
 $plugin->component = 'block_quickfindlist';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '2.0.2 (Build: 2010110900)';
+$plugin->release = '2.0.2 (Build: 2014040700)';
