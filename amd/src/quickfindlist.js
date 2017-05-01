@@ -1,6 +1,6 @@
 define(
-    ['jquery'],
-    function($) {
+    ['jquery', 'core/str'],
+    function($, str) {
         var priv = {
             sesskey: null,
             instances: []
@@ -62,13 +62,31 @@ define(
                         sesskey: priv.sesskey
                     }
                 }).done(function(response) {
-                    var list = $('<ul />');
+                    var list = $('<ul class="dropdown-menu" />');
+                    var noresults = "--";
+                    str.get_strings([
+                            { key: 'noresults', component: 'block_quickfindlist' },
+                        ]).done(function(strs) {
+                            noresults = strs[0];
+                        }).fail();
+                    var linone = $('<li><a class="disabled">'+noresults+'</a></li>');
+                    var userstring = '';
                     for (var p in response.people) {
-                        var userstring = instance.userfields.replace('[[firstname]]', response.people[p].firstname);
+                        userstring = instance.userfields.replace('[[firstname]]', response.people[p].firstname);
                         userstring = userstring.replace('[[lastname]]', response.people[p].lastname);
                         userstring = userstring.replace('[[username]]', response.people[p].username);
                         var li = $('<li><a href="'+instance.url+'&id='+response.people[p].id+'">'+userstring+'</a></li>');
                         list.append(li);
+                    }
+                    if ("" === userstring) {      //If searching but no results
+                        list.append(linone);
+                    }
+                    else if (response.results) {
+                        var liresults = $('<li><span class="disabled">'+response.results+'</span></li>');
+                        list.append(liresults);
+                    }
+                    if ("" === response.needle) {
+                        list.css('visibility', 'hidden');
                     }
                     $('#quickfindlist'+roleid).replaceWith(list);
                     list.attr('id', 'quickfindlist'+roleid);

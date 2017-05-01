@@ -24,7 +24,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['allusers']         = 'All Users';
+$string['allusers']         = 'User';
 $string['pluginname']         = 'Quickfind List';
 $string['blockname']         = 'Quickfind List';
 $string['list']         =  ' List';
@@ -32,11 +32,14 @@ $string['loading']  = 'Loading...';
 $string['lotsofusers']         = ' WARNING: lots of users ({$a}) could get slow';
 $string['multiplenorole']         = 'You cannot have two blocks on the same page without a role configured; Edit this block and select a role.';
 $string['nousers']         =  'ERROR: No users have that role';
+$string['noresults'] = 'No results';
 $string['quickfindlist']         = 'Quickfind List';
 $string['quickfindlist:addinstance'] = 'Add a new quickfindlist block';
 $string['quickfindlist:myaddinstance'] = 'Add a new quickfindlist block to My home';
 $string['quickfindlist:use']         = 'Use Quickfind List';
 $string['role']         = 'Role for listed people to have';
+$string['search'] = 'Search for a {$a}';
 $string['url']         = 'Page to link to (the person\'s id will be appended to the end).<br />Leave blank for default profile';
 $string['userfields']         = 'User data to display/search,<br />You can use the following placeholders:<ul><li>[[firstname]]</li><li>[[lastname]]</li><li>[[username]]</li></ul>';
-$string['userfieldsdefault']         = '[[firstname]] [[lastname]]';
+$string['userfieldsdefault']         = '[[firstname]] [[lastname]] ([[username]])';
+$string['xofy'] = 'Displaying {$a->numerator} of {$a->denominator} matching records';

@@ -34,12 +34,15 @@ $role = required_param('role', PARAM_INT);
 $courseformat = required_param('courseformat', PARAM_TEXT);
 $courseid = required_param('courseid', PARAM_TEXT);
 
+$name = str_replace(' ', '', $name);        //Remove spaces
+
 $context = get_context_instance(CONTEXT_COURSE, $courseid);
 
 if (isloggedin() && has_capability('block/quickfindlist:use', $context) && confirm_sesskey()) {
 
     $output = new stdClass;
     $output->roleid = $role;
+    $output->needle = $name;
     if (!empty($name)) {
 
         // max 2 words
@@ -95,7 +98,10 @@ if (isloggedin() && has_capability('block/quickfindlist:use', $context) && confi
 
         $order = 'ORDER BY lastname';
 
-        if ($people = $DB->get_records_sql($select . $from . $where . $order, $params)) {
+        if ($people = $DB->get_records_sql($select . $from . $where . $order, $params, 0, 50)) {
+            $results->denominator = $DB->count_records_sql("SELECT COUNT(id) $from $where", $params);
+            $results->numerator = count($people);
+            $output->results = get_string('xofy', 'block_quickfindlist', $results);
             $output->people = $people;
         }
     }
